@@ -79,7 +79,7 @@ install_dependencies () {
 }
 
 setup () {
-  echo "Script by [Yanis]"
+  echo "${BLUE}Script by ${RED}[Yanis]"
   echo "Setting up firewall rules"
   reset_ip_tables
   read -p "Enter your platform ([xbox], [psn] or [steam]): " platform
