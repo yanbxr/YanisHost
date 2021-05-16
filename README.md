@@ -1,11 +1,11 @@
-# 🌎 d2hosting by Yanis
+# Destiny hosting guide by Yanis
 
 ## ⚙️ Requirements
-- VirtualBox is a general-purpose full virtualizer for x86 hardware, targeted at server, desktop and embedded use [[Website](https://www.virtualbox.org/wiki/Downloads)]
-- Ubuntu 20.04 Image [[Installation image](https://releases.ubuntu.com/20.04/ubuntu-20.04.2-live-server-amd64.iso)]
+- VirtualBox, general-purpose full virtualizer for x86 hardware, targeted at server, desktop and embedded use [[VirtualBox website](https://www.virtualbox.org/)]
+- Ubuntu 20.04 server image [[Server installation image](https://releases.ubuntu.com/20.04/ubuntu-20.04.2-live-server-amd64.iso)]
 
 ## 📁 Virtual Server Creation
-TBD
+Need to add steps with gifs
 
 ## 🤖 Script
 ```bash 
