@@ -1,5 +1,6 @@
 #!/bin/bash
-#credits to @BasRaayman and @inchenzo
+#Credits to @BasRaayman and @inchenzo
+#Uploaded by Yanis
 
 INTERFACE="tun0"
 DEFAULT_NET="10.8.0.0/24"
@@ -18,15 +19,12 @@ done
 
 reset_ip_tables () {
   sudo service iptables restart
-
   #reset iptables to default
   sudo iptables -P INPUT ACCEPT
   sudo iptables -P FORWARD ACCEPT
   sudo iptables -P OUTPUT ACCEPT
-
   sudo iptables -F
   sudo iptables -X
-
   #allow openvpn
   if ip a | grep -q "tun0"; then
     if ! sudo iptables-save | grep -q "POSTROUTING -s 10.8.0.0/24"; then
@@ -76,10 +74,10 @@ install_dependencies () {
     sudo cp /root/client.ovpn /var/www/html/client.ovpn
     ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
     echo -e "${GREEN}You can download the openvpn config from ${BLUE}http://$ip/client.ovpn"
-    echo -e "${GREEN}If you are unable to access this file, you may need to allow/open the http port 80 with your vps provider."
-    echo -e "Otherwise you can always run the command cat /root/client.ovpn and copy/paste ALL of its contents in a file on your PC."
-    echo -e "It will be deleted automatically in 15 minutes for security reasons."
-    echo -e "Be sure to import this config to your router and connect your consoles before proceeding any further.${NC}"
+    echo -e "${GREEN}If you are unable to access this file, you may need to allow/open the http port 80 with your VPS provider"
+    echo -e "Otherwise you can always run the command cat /root/client.ovpn and copy/paste ALL of its contents in a file on your PC"
+    echo -e "It will be deleted automatically in 15 minutes for security reasons"
+    echo -e "Be sure to import this config to your router and connect your consoles before proceeding any further${NC}"
     nohup bash -c 'sleep 900 && sudo service nginx stop && sudo apt remove nginx -y && sudo rm /var/www/html/client.ovpn' &>/dev/null &
   else
     sudo DEBIAN_FRONTEND=noninteractive apt-get -y -q install iptables iptables-persistent ngrep > /dev/null
@@ -88,33 +86,27 @@ install_dependencies () {
 }
 
 setup () {
-  echo "Setting up firewall rules."
+  echo "Setting up firewall rules"
   reset_ip_tables
-
-  read -p "Enter your platform xbox, psn, steam: " platform
+  read -p "Enter your platform [xbox], [psn], [steam]: " platform
   platform=$(echo "$platform" | xargs)
   platform=${platform:-"psn"}
-
   reject_str=$(get_platform_match_str $platform)
   echo $platform > /tmp/data.txt
-
   read -p "Enter your network/netmask: " net
   net=$(echo "$net" | xargs)
   net=${net:-$DEFAULT_NET}
   echo $net >> /tmp/data.txt
-
   ids=()
-  read -p "Would you like to sniff the ID automatically?(psn/xbox/steam) y/n: " yn
+  read -p "Would you like to sniff the ID automatically? y/n: " yn
   yn=${yn:-"y"}
   if ! [[ $platform =~ ^(psn|xbox|steam)$ ]]; then
     yn="n"
   fi
   echo "n" >> /tmp/data.txt
-
   #auto sniffer
   if [ "$yn" == "y" ]; then
-
-    echo -e "${RED}Press any key to stop sniffing. DO NOT CTRL C${NC}"
+    echo -e "${RED}Press any key to stop sniffing${NC}"
     sleep 1
     if [ $platform == "psn" ]; then
       ngrep -l -q -W byline -d $INTERFACE "psn-4" udp | grep --line-buffered -o -P 'psn-4[0]{8}\K[A-F0-9]{7}' | tee -a /tmp/data.txt &
@@ -123,7 +115,6 @@ setup () {
     elif [ $platform == "steam" ]; then
       ngrep -l -q -W byline -d $INTERFACE "steamid:" udp | grep --line-buffered -o -P 'steamid:\K[0-9]{17}' | tee -a /tmp/data.txt &
     fi
-
     while [ true ] ; do
       read -t 1 -n 1
       if [ $? = 0 ] ; then
@@ -131,7 +122,6 @@ setup () {
       fi
     done
     pkill -15 ngrep
-
     #remove duplicates
     awk '!a[$0]++' /tmp/data.txt > /tmp/temp.txt && mv /tmp/temp.txt /tmp/data.txt
     #get number of accounts
@@ -161,12 +151,9 @@ setup () {
       ids+=( "$idf;$sid" )
     done
   fi;
-
   mv /tmp/data.txt ./data.txt
-
   echo "-m string --string $reject_str --algo bm -j REJECT" > reject.rule
-  sudo iptables -I FORWARD -m string --string $reject_str --algo bm -j REJECT
-  
+  sudo iptables -I FORWARD -m string --string $reject_str --algo bm -j REJECT 
   n=${#ids[*]}
   INDEX=1
   for (( i = n-1; i >= 0; i-- ))
@@ -182,8 +169,7 @@ setup () {
     sudo iptables -N "${id[0]}"
     sudo iptables -I FORWARD -s $inet -p udp -m string --string "${id[1]}" --algo bm -j "${id[0]}"
     ((INDEX++))
-  done
-  
+  done 
   INDEX1=1
   for i in "${ids[@]}"
   do
@@ -208,8 +194,8 @@ setup () {
     done
     ((INDEX1++))
   done
-
-  echo "Setup is complete and matchmaking firewall is now active."
+  echo "Setup is complete and matchmaking firewall is now active"
+  echo "Modified by [Yanis]"
 }
 
 if [ "$action" == "setup" ]; then
@@ -219,12 +205,12 @@ if [ "$action" == "setup" ]; then
   fi
   setup
 elif [ "$action" == "stop" ]; then
-  echo "Matchmaking is no longer being restricted."
+  echo "Matchmaking is no longer being restricted"
   reject=$(<reject.rule)
   sudo iptables -D FORWARD $reject
 elif [ "$action" == "start" ]; then
   if ! sudo iptables-save | grep -q "REJECT"; then
-    echo "Matchmaking is now being restricted."
+    echo "Matchmaking is now being restricted"
     pos=$(iptables -L FORWARD | grep "system" | wc -l)
     ((pos++))
     reject=$(<reject.rule)
@@ -238,7 +224,7 @@ elif [ "$action" == "add" ]; then
     n=$(sed -n '4p' < data.txt)
     ((n++))
     sed -i "4c$n" data.txt
-    read -p "Would you like to enter another ID? y/n " yn
+    read -p "Would you like to enter another ID? y/n: " yn
     yn=${yn:-"y"}
     if [ $yn == "y" ]; then
       bash d2firewall.sh -a add
@@ -261,13 +247,13 @@ elif [ "$action" == "remove" ]; then
 elif [ "$action" == "sniff" ]; then
   platform=$(sed -n '1p' < data.txt)
   if ! [[ $platform =~ ^(psn|xbox|steam)$ ]]; then
-      echo "Only psn,xbox, and steam are supported atm."
+      echo "Only [psn], [xbox] and [steam] are supported at the moment"
     exit 1
   fi
   bash d2firewall.sh -a stop
 
   #auto sniff
-  echo -e "${RED}Press any key to stop sniffing. DO NOT CTRL C${NC}"
+  echo -e "${RED}Press any key to stop sniffing${NC}"
 
   sleep 1
   if [ $platform == "psn" ]; then
@@ -297,16 +283,16 @@ elif [ "$action" == "list" ]; then
   tail -n +5 data.txt | cat -n
 elif [ "$action" == "update" ]; then
   rm ./d2firewall.sh
-  wget -q https://raw.githubusercontent.com/cloudex99/Destiny-2-Matchmaking-Firewall/main/d2firewall.sh -O ./d2firewall.sh
+  wget -q https://raw.githubusercontent.com/yanbxr/d2hosting/main/d2hosting.sh -O ./d2firewall.sh
   chmod +x ./d2firewall.sh
-  echo -e "${GREEN}Script update complete."
-  echo -e "Please rerun the initial setup to avoid any issues.${NC}"
+  echo -e "${GREEN}Script update complete"
+  echo -e "Please rerun the initial setup to avoid any issues${NC}"
 elif [ "$action" == "load" ]; then
-  echo "Loading firewall rules."
+  echo "Loading firewall rules"
   if [ -f ./data.txt ]; then
       bash d2firewall.sh -a setup < ./data.txt
   fi
 elif [ "$action" == "reset" ]; then
-  echo "Erasing all firewall rules."
+  echo "Erasing all firewall rules"
   reset_ip_tables
 fi
