@@ -8,7 +8,8 @@
 Need to add steps with gifs
 
 ## 🤖 Script
-```bash 
-wget -q https://raw.githubusercontent.com/yanbxr/d2hosting/main/d2.sh -O ./d2firewall.sh
-bash d2firewall.sh -a setup
+```bash
+sudo su
+wget -q https://raw.githubusercontent.com/yanbxr/d2hosting/main/d2.sh -O ./d2.sh
+bash d2.sh -a setup
 ```
