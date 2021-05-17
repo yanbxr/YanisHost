@@ -79,7 +79,7 @@ install_dependencies () {
 }
 
 setup () {
-  echo -e "${BLUE}Script by ${RED}[Yanis]"
+  echo -e "${BLUE}Optimized version by [Yanis]"
   echo -e "${GREEN}Setting up firewall rules${NC}"
   reset_ip_tables
   read -p "Enter your platform ([xbox], [psn] or [steam]): " platform
@@ -284,5 +284,3 @@ elif [ "$action" == "reset" ]; then
   echo "Erasing all firewall rules"
   reset_ip_tables
 fi
-
-#Credits to [BasRaayman] and [Inchenzo]
