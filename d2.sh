@@ -79,7 +79,7 @@ install_dependencies () {
 }
 
 setup () {
-  echo -e "${BLUE}Optimized version by [Yanis]"
+  echo -e "Optimized by \e[5;35mYanis"
   echo -e "${GREEN}Setting up firewall rules${NC}"
   reset_ip_tables
   read -p "Enter your platform ([xbox], [psn] or [steam]): " platform
