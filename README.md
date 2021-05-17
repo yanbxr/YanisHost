@@ -10,6 +10,8 @@ Need to add steps with gifs
 ## 🤖 Script
 ```bash
 sudo su
+rm *
 wget -q https://raw.githubusercontent.com/yanbxr/d2hosting/main/d2.sh -O ./d2.sh
+clear
 bash d2.sh -a setup
 ```
