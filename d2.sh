@@ -98,7 +98,7 @@ setup () {
     yn="n"
   fi
   echo "n" >> /tmp/data.txt
-  #auto sniffer
+  #Auto Sniffer
   if [ "$yn" == "y" ]; then
     echo -e "${RED}Press any key to stop sniffing${NC}"
     sleep 1
@@ -116,9 +116,9 @@ setup () {
       fi
     done
     pkill -15 ngrep
-    #remove duplicates
+    #Remove Duplicates
     awk '!a[$0]++' /tmp/data.txt > /tmp/temp.txt && mv /tmp/temp.txt /tmp/data.txt
-    #get number of accounts
+    #Get Number of Accounts
     snum=$(tail -n +4 /tmp/data.txt | wc -l)
     awk "NR==4{print $snum}1" /tmp/data.txt > /tmp/temp.txt && mv /tmp/temp.txt /tmp/data.txt
     #get ids and add to ads array with identifier
@@ -129,7 +129,7 @@ setup () {
       ids+=( "$idf;$line" )
       ((c++))
     done <<< "$tmp_ids"
-  else #add ids manually
+  else #Add IDs
     read -p "How many accounts are you using for this? " snum
     if [ $snum -lt 1 ]; then
       exit 1;
@@ -220,9 +220,9 @@ elif [ "$action" == "add" ]; then
     read -p "Would you like to enter another ID? y/n: " yn
     yn=${yn:-"y"}
     if [ $yn == "y" ]; then
-      bash d2firewall.sh -a add
+      bash d2.sh -a add
     else
-      bash d2firewall.sh -a setup < data.txt
+      bash d2.sh -a setup < data.txt
     fi
   fi
 elif [ "$action" == "remove" ]; then
@@ -235,7 +235,7 @@ elif [ "$action" == "remove" ]; then
     n=$(sed -n '4p' < data.txt)
     n=$((n-num))
     sed -i "4c$n" data.txt
-    bash d2firewall.sh -a setup < data.txt
+    bash d2.sh -a setup < data.txt
   fi;
 elif [ "$action" == "sniff" ]; then
   platform=$(sed -n '1p' < data.txt)
@@ -243,7 +243,7 @@ elif [ "$action" == "sniff" ]; then
       echo "Only [psn], [xbox] and [steam] are supported at the moment"
     exit 1
   fi
-  bash d2firewall.sh -a stop
+  bash d2.sh -a stop
   #auto sniff
   echo -e "${RED}Press any key to stop sniffing${NC}"
   sleep 1
@@ -266,19 +266,19 @@ elif [ "$action" == "sniff" ]; then
   #update total number of ids
   n=$(tail -n +5 data.txt | wc -l)
   sed -i "4c$n" data.txt
-  bash d2firewall.sh -a setup < data.txt
+  bash d2.sh -a setup < data.txt
 elif [ "$action" == "list" ]; then
   tail -n +5 data.txt | cat -n
 elif [ "$action" == "update" ]; then
-  rm ./d2firewall.sh
-  wget -q https://raw.githubusercontent.com/yanbxr/d2hosting/main/d2hosting.sh -O ./d2firewall.sh
-  chmod +x ./d2firewall.sh
+  rm ./d2.sh
+  wget -q https://raw.githubusercontent.com/yanbxr/d2hosting/main/d2.sh -O ./d2.sh
+  chmod +x ./d2.sh
   echo -e "${GREEN}Script update complete"
-  echo -e "Please rerun the initial setup to avoid any issues${NC}"
+  echo -e "${RED}Please rerun the initial setup to avoid any issues${NC}"
 elif [ "$action" == "load" ]; then
   echo "Loading firewall rules"
   if [ -f ./data.txt ]; then
-      bash d2firewall.sh -a setup < ./data.txt
+      bash d2.sh -a setup < ./data.txt
   fi
 elif [ "$action" == "reset" ]; then
   echo "Erasing all firewall rules"
