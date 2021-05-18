@@ -6,9 +6,9 @@
 
 ## 📁 Virtual Server Creation
 - Create a Virtual Machine by clicking the **New** button
-- Name it Ubuntu and set the Memory size to **2048MB**
+- Name the machine Ubuntu and set its Memory size to **2048MB**
 - Do not change the VDI settings and click **Create**
-- Go to the Network tab in the machine settings, and change the **NAT** option to **Bridged Adaptator**
+- Go to the Network tab in the machine settings (yellow **Settings** button), and change the **NAT** option to **Bridged Adaptator**
 - Start the machine and select the Ubuntu server image
 
 ## 🤖 Install the script
