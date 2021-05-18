@@ -37,7 +37,6 @@ clear
 
 ## 🔂 Re-start the script
 ```bash
-sudo -s
 rm ./d2
 wget -q https://raw.githubusercontent.com/yanbxr/d2hosting/main/d2 -O ./d2
 chmod +x ./d2
