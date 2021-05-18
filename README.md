@@ -2,14 +2,14 @@
 
 ## ⚙️ Requirements
 - VirtualBox (can load multiple guest OSes under a single host operating-system) - [VirtualBox website](https://www.virtualbox.org/)
-- Ubuntu 20.04 server image - [Server installation image](https://releases.ubuntu.com/20.04/ubuntu-20.04.2-live-server-amd64.iso)
+- Ubuntu 20.04 server image - [Download image](https://releases.ubuntu.com/20.04/ubuntu-20.04.2-live-server-amd64.iso)
 
 ## 📁 Virtual Server Creation
 - Create a Virtual Machine
-- Name it Ubuntu and set the Memory size to 2048MB
-- Do not change the VDI settings and click 'Create'
-- Go to the Network tab in the machine settings, and change the 'NAT' option to 'Bridged Adaptator'
-- Start the machine and select the image linked in the 'Requirements' tab
+- Name it Ubuntu and set the Memory size to **2048MB**
+- Do not change the VDI settings and click **Create**
+- Go to the Network tab in the machine settings, and change the **NAT** option to **Bridged Adaptator**
+- Start the machine and select the Ubuntu server image
 
 ## 🤖 Install the script
 ```bash
