@@ -1,4 +1,4 @@
-# Destiny hosting guide by Yanis
+# Destiny Hosting
 
 ## ⚙️ Requirements
 - VirtualBox (can load multiple guest OSes under a single host operating-system) - [VirtualBox website](https://www.virtualbox.org/)
