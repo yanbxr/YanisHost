@@ -11,6 +11,11 @@
 1. Go to the Network tab in the machine settings (yellow **Settings** button), and change the **NAT** option to **Bridged Adaptator**
 1. Start the machine and select the Ubuntu server image
 
+## 🔧 Install OpenVPN
+```bash
+wget https://git.io/vpn -O openvpn-install.sh && bash openvpn-install.sh
+```
+
 ## 🤖 Install the script
 ```bash
 rm *
