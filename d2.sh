@@ -6,11 +6,10 @@ GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 NC='\033[0m'
 
-while getopts "" opt; do
+while getopts "a:" opt; do
   case $opt in
     a) action=$OPTARG ;;
-    *) echo 'Not a valid command' >&2
-       exit 1
+    *) action=$OPTARG ;;
   esac
 done
 
