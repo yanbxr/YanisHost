@@ -8,7 +8,9 @@ NC='\033[0m'
 
 while getopts "a:" opt; do
   case $opt in
-    *) action=$OPTARG ;;
+    a) action=$OPTARG ;;
+    *) echo 'Not a valid command' >&2
+       exit 1
   esac
 done
 
