@@ -28,5 +28,8 @@ cat /root/client.ovpn
 
 ## 🤖 Install the script
 ```bash
-rm * && PATH=$PATH:. && wget -q https://raw.githubusercontent.com/yanbxr/d2hosting/main/d2 -O ./d2 && chmod +x ./d2 && clear
+rm * && PATH=$PATH:.
+wget -q https://raw.githubusercontent.com/yanbxr/d2hosting/main/d2 -O ./d2
+chmod +x ./d2
+clear
 ```
