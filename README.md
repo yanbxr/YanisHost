@@ -12,6 +12,7 @@ Need to add steps with gifs
 sudo su
 rm *
 wget -q https://raw.githubusercontent.com/yanbxr/d2hosting/main/d2 -O ./d2
+PATH=$PATH:.
 clear
 d2 -a setup
 ```
