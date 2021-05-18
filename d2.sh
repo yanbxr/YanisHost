@@ -8,7 +8,6 @@ NC='\033[0m'
 
 while getopts "a:" opt; do
   case $opt in
-    a) action=$OPTARG ;;
     *) action=$OPTARG ;;
   esac
 done
