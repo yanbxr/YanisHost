@@ -5,11 +5,11 @@
 - Ubuntu 20.04 server image - [Download image](https://releases.ubuntu.com/20.04/ubuntu-20.04.2-live-server-amd64.iso)
 
 ## 📁 Virtual Server Creation
-- Create a Virtual Machine by clicking the **New** button
-- Name the machine Ubuntu and set its Memory size to **2048MB**
-- Do not change the VDI settings and click **Create**
-- Go to the Network tab in the machine settings (yellow **Settings** button), and change the **NAT** option to **Bridged Adaptator**
-- Start the machine and select the Ubuntu server image
+1 - Create a Virtual Machine by clicking the **New** button
+1 - Name the machine Ubuntu and set its Memory size to **2048MB**
+1 - Do not change the VDI settings and click **Create**
+1 - Go to the Network tab in the machine settings (yellow **Settings** button), and change the **NAT** option to **Bridged Adaptator**
+1 - Start the machine and select the Ubuntu server image
 
 ## 🤖 Install the script
 ```bash
