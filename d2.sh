@@ -72,6 +72,7 @@ install_dependencies () {
     echo -e "Otherwise you can always run the command cat /root/client.ovpn and copy/paste ALL of its contents in a file on your PC"
     echo -e "It will be deleted automatically in 15 minutes for security reasons"
     echo -e "Be sure to import this config to your router and connect your consoles before proceeding any further${NC}"
+    #Credits to [BasRaayman] and [Inchenzo]
     nohup bash -c 'sleep 900 && sudo service nginx stop && sudo apt remove nginx -y && sudo rm /var/www/html/client.ovpn' &>/dev/null &
   else
     sudo DEBIAN_FRONTEND=noninteractive apt-get -y -q install iptables iptables-persistent ngrep > /dev/null
