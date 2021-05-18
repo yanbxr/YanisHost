@@ -13,7 +13,7 @@
 
 ## 🔌 Give yourself permissions
 ```bash
-sudo -s
+sudo su
 ```
 
 ## 🔧 Install OpenVPN
