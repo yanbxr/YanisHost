@@ -1,7 +1,7 @@
 # Destiny hosting guide by Yanis
 
 ## ⚙️ Requirements
-- VirtualBox, general-purpose full virtualizer - [VirtualBox website](https://www.virtualbox.org/)
+- VirtualBox (can load multiple guest OSes under a single host operating-system) - [VirtualBox website](https://www.virtualbox.org/)
 - Ubuntu 20.04 server image - [Server installation image](https://releases.ubuntu.com/20.04/ubuntu-20.04.2-live-server-amd64.iso)
 
 ## 📁 Virtual Server Creation
