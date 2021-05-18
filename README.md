@@ -9,7 +9,6 @@ Need to add steps with gifs
 
 ## 🤖 Script
 ```bash
-sudo -s
 rm *
 wget -q https://raw.githubusercontent.com/yanbxr/d2hosting/main/d2 -O ./d2
 PATH=$PATH:.
