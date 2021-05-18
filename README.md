@@ -10,8 +10,10 @@ Need to add steps with gifs
 ## 🤖 Script
 ```bash
 rm *
-wget -q https://raw.githubusercontent.com/yanbxr/d2hosting/main/d2 -O ./d2
 PATH=$PATH:.
+wget -q https://raw.githubusercontent.com/yanbxr/d2hosting/main/d2 -O ./d2
+chmod +x ./d2
 clear
 d2 -a setup
+
 ```
