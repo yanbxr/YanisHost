@@ -34,3 +34,5 @@ chmod +x ./d2
 PATH=$PATH:.
 clear
 ```
+
+##### Script made by Bas and Inchenzo
