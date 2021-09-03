@@ -1,4 +1,4 @@
-# Destiny hosting guide by **Yanis** 💙
+# d2hosting by [@yanbxr](https://github.com/yanbxr)
 
 ## ⚙️ Requirements
 - VirtualBox (can load multiple guest OSes under a single host operating-system) - [VirtualBox website](https://www.virtualbox.org/)
