@@ -1,7 +1,7 @@
 # d2hosting by [@yanbxr](https://github.com/yanbxr)
 
 ## 🚨 Warning
-**Hosting ghost lobbies is now banable**
+**Hosting ghost lobbies / free wins is now banable, do it at your own risk**
 
 ## ⚙️ Requirements
 - VirtualBox (can load multiple guest OSes under a single host operating-system) - [VirtualBox website](https://www.virtualbox.org/)
