@@ -1,4 +1,4 @@
-# d2hosting by [@yanbxr](https://github.com/yanbxr)
+# d2hosting guide by [@yanbxr](https://github.com/yanbxr)
 
 ## 🚨 Warning
 **Hosting ghost lobbies / free wins is now banable, do it at your own risk**
