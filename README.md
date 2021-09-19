@@ -10,6 +10,7 @@
 1. Do not change the VDI settings and click **Create**
 1. Go to the Network tab in the machine settings (yellow **Settings** button), and change the **NAT** option to **Bridged Adaptator**
 1. Start the machine and select the Ubuntu server image
+1. Leave all default settings (except for OpenSSH - click install)
 
 ## 🔌 Give yourself permissions
 ```bash
