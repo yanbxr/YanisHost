@@ -12,6 +12,11 @@
 1. Start the machine and select the Ubuntu server image
 1. Leave all default settings (except for OpenSSH - click install)
 
+## 🔗 SSH to the VM
+```bash
+ssh [user]@[server ip]
+```
+
 ## 🔌 Give yourself permissions
 ```bash
 sudo su
