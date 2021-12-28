@@ -206,12 +206,10 @@ elif [ "$action" == "stop" ]; then
   sudo iptables -D FORWARD -m string --string "xboxpwid" --algo bm -j REJECT 
   sudo iptables -D FORWARD -m string --string "steamid" --algo bm -j REJECT 
 elif [ "$action" == "start" ]; then
-  if ! sudo iptables-save | grep -q "REJECT"; then
-    echo "Matchmaking is now being restricted"
-    pos=$(iptables -L FORWARD | grep "system" | wc -l)
-    ((pos++))
-    sudo iptables -I FORWARD $pos $reject
-  fi
+  echo "Matchmaking is now being restricted"
+  sudo iptables -I FORWARD -m string --string "psn-4" --algo bm -j REJECT 
+  sudo iptables -I FORWARD -m string --string "xboxpwid" --algo bm -j REJECT 
+  sudo iptables -I FORWARD -m string --string "steamid" --algo bm -j REJECT 
 elif [ "$action" == "add" ]; then
   read -p "Enter the sniffed ID: " id
   id=$(echo "$id" | xargs)
