@@ -275,7 +275,6 @@ elif [ "$action" == "update" ]; then
   wget -q https://raw.githubusercontent.com/yanbxr/d2hosting/main/d2 -O ./d2
   chmod +x ./d2
   echo -e "${GREEN}Script update complete"
-  echo -e "${RED}Please rerun the initial setup to avoid any issues${NC}"
 elif [ "$action" == "load" ]; then
   echo "Loading firewall rules"
   if [ -f ./data.txt ]; then
@@ -287,9 +286,9 @@ elif [ "$action" == "reset" ]; then
 elif [ "$action" == "switch" ]; then
   read -p "Enter the platform you want to switch to ([xbox], [psn] or [steam]): " platform
   if [ $platform == "psn" ]; then
-    sed -i '1s/.*/steam/' data.txt
+    sed -i '1s/.*/psn/' data.txt
   elif [ $platform == "xbox" ]; then
-    sed -i '1s/.*/steam/' data.txt
+    sed -i '1s/.*/xbox/' data.txt
   elif [ $platform == "steam" ]; then
     sed -i '1s/.*/steam/' data.txt
   fi
