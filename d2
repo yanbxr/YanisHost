@@ -273,10 +273,11 @@ elif [ "$action" == "sniff" ]; then
 elif [ "$action" == "list" ]; then
   tail -n +5 data.txt | cat -n
 elif [ "$action" == "update" ]; then
-  rm ./d2
+  rm *
   wget -q https://raw.githubusercontent.com/yanbxr/d2hosting/main/d2 -O ./d2
   chmod +x ./d2
-  echo -e "${GREEN}Script update complete"
+  PATH=$PATH:.
+  clear
 elif [ "$action" == "load" ]; then
   echo "Loading firewall rules"
   if [ -f ./data.txt ]; then
