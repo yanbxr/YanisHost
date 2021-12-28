@@ -287,5 +287,10 @@ elif [ "$action" == "reset" ]; then
 elif [ "$action" == "switch" ]; then
   read -p "Enter the platform you want to switch to ([xbox], [psn] or [steam]): " platform
   platform=$(echo "$platform" | xargs)
-  sed -i '1s/.*/$platform/' data.txt
+  if [ $platform == "psn" ]; then
+	  sed -i '1s/.*/psn/' data.txt
+  elif [ $platform == "xbox" ]; then
+	  sed -i '1s/.*/xbox/' data.txt
+  elif [ $platform == "steam" ]; then
+	  sed -i '1s/.*/steam/' data.txt
 fi
