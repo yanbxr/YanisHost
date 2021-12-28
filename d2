@@ -1,5 +1,5 @@
 #Uploaded by [Yanis]
-#Credits to [BasRaayman] and [Inchenzo]
+
 INTERFACE="tun0"
 DEFAULT_NET="10.8.0.0/24"
 RED='\033[0;31m'
@@ -284,4 +284,8 @@ elif [ "$action" == "load" ]; then
 elif [ "$action" == "reset" ]; then
   echo "Erasing all firewall rules"
   reset_ip_tables
+elif [ "$action" == "switch" ]; then
+  read -p "Enter the platform you want to switch to ([xbox], [psn] or [steam]): " platform
+  platform=$(echo "$platform" | xargs)
+  sed -i '1s/.*/$platform/' data.txt
 fi
