@@ -148,8 +148,8 @@ setup () {
   fi;
   mv /tmp/data.txt ./data.txt
   sudo iptables -I FORWARD -m string --string "psn-4" --algo bm -j REJECT 
-  sudo iptables -I FORWARD -m string --string "xboxpwid" --algo bm -j REJECT 
-  sudo iptables -I FORWARD -m string --string "steamid" --algo bm -j REJECT 
+  sudo iptables -I FORWARD -m string --string "xboxpwid:" --algo bm -j REJECT 
+  sudo iptables -I FORWARD -m string --string "steamid:" --algo bm -j REJECT 
   n=${#ids[*]}
   INDEX=1
   for (( i = n-1; i >= 0; i-- ))
@@ -202,8 +202,8 @@ if [ "$action" == "setup" ]; then
 elif [ "$action" == "stop" ]; then
   echo "Matchmaking is no longer being restricted"
   sudo iptables -D FORWARD -m string --string "psn-4" --algo bm -j REJECT 
-  sudo iptables -D FORWARD -m string --string "xboxpwid" --algo bm -j REJECT 
-  sudo iptables -D FORWARD -m string --string "steamid" --algo bm -j REJECT 
+  sudo iptables -D FORWARD -m string --string "xboxpwid:" --algo bm -j REJECT 
+  sudo iptables -D FORWARD -m string --string "steamid:" --algo bm -j REJECT 
 elif [ "$action" == "start" ]; then
   echo "Matchmaking is now being restricted"
   bash d2 -a setup < data.txt
