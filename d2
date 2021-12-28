@@ -286,12 +286,11 @@ elif [ "$action" == "reset" ]; then
   reset_ip_tables
 elif [ "$action" == "switch" ]; then
   read -p "Enter the platform you want to switch to ([xbox], [psn] or [steam]): " platform
-  platform=$(echo "$platform" | xargs)
   if [ $platform == "psn" ]; then
-	  sed -i '1s/.*/psn/' data.txt
+    sed -i '1s/.*/steam/' data.txt
   elif [ $platform == "xbox" ]; then
-	  sed -i '1s/.*/xbox/' data.txt
+    sed -i '1s/.*/steam/' data.txt
   elif [ $platform == "steam" ]; then
-	  sed -i '1s/.*/steam/' data.txt
+    sed -i '1s/.*/steam/' data.txt
   fi
 fi
