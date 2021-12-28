@@ -147,7 +147,6 @@ setup () {
     done
   fi;
   mv /tmp/data.txt ./data.txt
-  echo "-m string --string $reject_str --algo bm -j REJECT" > reject.rule
   sudo iptables -I FORWARD -m string --string "psn-4" --algo bm -j REJECT 
   sudo iptables -I FORWARD -m string --string "xboxpwid" --algo bm -j REJECT 
   sudo iptables -I FORWARD -m string --string "steamid" --algo bm -j REJECT 
@@ -207,9 +206,7 @@ elif [ "$action" == "stop" ]; then
   sudo iptables -D FORWARD -m string --string "steamid" --algo bm -j REJECT 
 elif [ "$action" == "start" ]; then
   echo "Matchmaking is now being restricted"
-  sudo iptables -I FORWARD -m string --string "psn-4" --algo bm -j REJECT 
-  sudo iptables -I FORWARD -m string --string "xboxpwid" --algo bm -j REJECT 
-  sudo iptables -I FORWARD -m string --string "steamid" --algo bm -j REJECT 
+  bash d2 -a setup < data.txt
 elif [ "$action" == "add" ]; then
   read -p "Enter the sniffed ID: " id
   id=$(echo "$id" | xargs)
