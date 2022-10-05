@@ -106,7 +106,7 @@ setup () {
     if [ $platform == "psn" ]; then
       ngrep -l -q -W byline -d $INTERFACE "psn-4" udp | grep --line-buffered -o -P 'psn-4[0]{8}\K[A-F0-9]{7}' | tee -a /tmp/data.txt &
     elif [ $platform == "xbox" ]; then
-      ngrep -l -q -W byline -d $INTERFACE "xboxpwid:" udp | grep --line-buffered -o -P 'xboxpwid:\K[A-F0-9]{32}' | tee -a /tmp/data.txt &
+      ngrep -l -q -W byline -d $INTERFACE "xbox-" udp | grep --line-buffered -o -P 'xbox-:\K[A-F0-9]{16}' | tee -a /tmp/data.txt &
     elif [ $platform == "steam" ]; then
       ngrep -l -q -W byline -d $INTERFACE "steamid:" udp | grep --line-buffered -o -P 'steamid:\K[0-9]{17}' | tee -a /tmp/data.txt &
     fi
@@ -148,7 +148,7 @@ setup () {
   fi;
   mv /tmp/data.txt ./data.txt
   sudo iptables -I FORWARD -m string --string "psn-4" --algo bm -j REJECT 
-  sudo iptables -I FORWARD -m string --string "xboxpwid:" --algo bm -j REJECT 
+  sudo iptables -I FORWARD -m string --string "xbox-" --algo bm -j REJECT 
   sudo iptables -I FORWARD -m string --string "steamid:" --algo bm -j REJECT 
   n=${#ids[*]}
   INDEX=1
