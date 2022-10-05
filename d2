@@ -260,7 +260,7 @@ elif [ "$action" == "sniff" ]; then
   done
   pkill -15 ngrep
   #remove duplicates
-  awk '!a[$0]++' data.txt > /tmp/data.txt && mv /tmp/data.txt data.txt
+  awk '!a[$1]++' data.txt > /tmp/data.txt && mv /tmp/data.txt data.txt
   nano data.txt
   #update total number of ids
   n=$(tail -n +5 data.txt | wc -l)
