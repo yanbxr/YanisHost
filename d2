@@ -39,7 +39,7 @@ get_platform_match_str () {
   if [ "$1" == "psn" ]; then
     val="psn-4"
   elif [ "$1" == "xbox" ]; then
-    val="xboxpwid:"
+    val="xbox-:"
   elif [ "$1" == "steam" ]; then
     val="steamid:"
   fi
@@ -80,7 +80,7 @@ install_dependencies () {
 }
 
 setup () {
-  echo -e "Optimized by \e[1;35mYanis"
+  echo -e "Optimized by \e[1;35mYanis (again)"
   echo -e "${RED}Setting up firewall rules${NC}"
   reset_ip_tables
   read -p "Enter your platform ([xbox], [psn] or [steam]): " platform
@@ -202,7 +202,7 @@ if [ "$action" == "setup" ]; then
 elif [ "$action" == "stop" ]; then
   echo "Matchmaking is no longer being restricted"
   sudo iptables -D FORWARD -m string --string "psn-4" --algo bm -j REJECT 
-  sudo iptables -D FORWARD -m string --string "xboxpwid:" --algo bm -j REJECT 
+  sudo iptables -D FORWARD -m string --string "xbox-" --algo bm -j REJECT 
   sudo iptables -D FORWARD -m string --string "steamid:" --algo bm -j REJECT 
 elif [ "$action" == "start" ]; then
   echo "Matchmaking is now being restricted"
