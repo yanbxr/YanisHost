@@ -258,13 +258,15 @@ elif [ "$action" == "sniff" ]; then
       break
     fi
   done
-  pkill -15 ngrep
-  #remove duplicates
-  awk '!a[$1]++' data.txt > /tmp/data.txt && mv /tmp/data.txt data.txt
-  nano data.txt
-  #update total number of ids
-  n=$(tail -n +5 data.txt | wc -l)
-  sed -i "4c$n" data.txt
+    pkill -15 ngrep
+    #Remove Duplicates
+    awk '!a[$0]++' /tmp/data.txt > /tmp/temp.txt && mv /tmp/temp.txt /tmp/data.txt
+    #Get Number of Accounts
+    snum=$(tail -n +4 /tmp/data.txt | wc -l)
+    awk "NR==4{print $snum}1" /tmp/data.txt > /tmp/temp.txt && mv /tmp/temp.txt /tmp/data.txt
+    #get ids and add to ads array with identifier
+    tmp_ids=$(tail -n +5 /tmp/data.txt)
+    mv /tmp/data.txt ./data.txt
   bash d2 -a setup < data.txt
 elif [ "$action" == "list" ]; then
   tail -n +5 data.txt | cat -n
