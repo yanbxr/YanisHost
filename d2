@@ -246,11 +246,11 @@ elif [ "$action" == "sniff" ]; then
   echo -e "${RED}Press any key to stop sniffing${NC}"
   sleep 1
     if [ $platform == "psn" ]; then
-      ngrep -l -q -W byline -d $INTERFACE "psn-4" udp | grep --line-buffered -o -P 'psn-4[0]{8}\K[A-F0-9]{7}' | tee -a /tmp/data.txt &
+      ngrep -l -q -W byline -d $INTERFACE "psn-4" udp | grep --line-buffered -o -P 'psn-4[0]{8}\K[A-F0-9]{7}' | tee -a ./data.txt &
     elif [ $platform == "xbox" ]; then
-      ngrep -l -q -W byline -d $INTERFACE "str:xbox-" udp | grep --line-buffered -o -P 'str:xbox-\K[a-zA-Z0-9_]{16}' | tee -a /tmp/data.txt &
+      ngrep -l -q -W byline -d $INTERFACE "str:xbox-" udp | grep --line-buffered -o -P 'str:xbox-\K[a-zA-Z0-9_]{16}' | tee -a ./data.txt &
     elif [ $platform == "steam" ]; then
-      ngrep -l -q -W byline -d $INTERFACE "steamid:" udp | grep --line-buffered -o -P 'steamid:\K[0-9]{17}' | tee -a /tmp/data.txt &
+      ngrep -l -q -W byline -d $INTERFACE "steamid:" udp | grep --line-buffered -o -P 'steamid:\K[0-9]{17}' | tee -a ./data.txt &
     fi
   while [ true ] ; do
     read -t 1 -n 1
@@ -258,15 +258,12 @@ elif [ "$action" == "sniff" ]; then
       break
     fi
   done
-    pkill -15 ngrep
-    #Remove Duplicates
-    awk '!a[$0]++' /tmp/data.txt > /tmp/temp.txt && mv /tmp/temp.txt /tmp/data.txt
-    #Get Number of Accounts
-    snum=$(tail -n +4 /tmp/data.txt | wc -l)
-    awk "NR==4{print $snum}1" /tmp/data.txt > /tmp/temp.txt && mv /tmp/temp.txt /tmp/data.txt
-    #get ids and add to ads array with identifier
-    tmp_ids=$(tail -n +5 /tmp/data.txt)
-    mv /tmp/data.txt ./data.txt
+  pkill -15 ngrep
+  #remove duplicates
+  awk '!a[$0]++' data.txt > /tmp/data.txt && mv /tmp/data.txt data.txt
+  #update total number of ids
+  n=$(tail -n +5 data.txt | wc -l)
+  sed -i "4c$n" data.txt
   bash d2 -a setup < data.txt
 elif [ "$action" == "list" ]; then
   tail -n +5 data.txt | cat -n
