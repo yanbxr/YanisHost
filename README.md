@@ -1,4 +1,4 @@
-#### >>> Recent changes broke the script if you need help message me on Discord: Yanis#0192 <<<
+#### ⚠️ Recent changes broke the script if you need help message me on Discord: Yanis#0192
 # d2hosting guide by [@yanbxr](https://github.com/yanbxr)
 ![](https://www.bungie.net/pubassets/pkgs/132/132674/Banner_TrialsofOsiris.jpg)
 ## ⚙️ Requirements
