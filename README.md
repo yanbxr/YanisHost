@@ -1,7 +1,7 @@
 # d2hosting guide by [@yanbxr](https://github.com/yanbxr)
 ### Recent changes broke the script if you need help message me on Discord: Yanis#0192
 
-![They banned me]([https://cdn.cloudflare.steamstatic.com/steam/apps/1085660/ss_7fcc82f468fcf8278c7ffa95cebf949bfc6845fc.1920x1080.jpg](https://www.bungie.net/pubassets/pkgs/132/132674/Banner_TrialsofOsiris.jpg))
+![They banned me](https://www.bungie.net/pubassets/pkgs/132/132674/Banner_TrialsofOsiris.jpg)
 
 ## ⚙️ Requirements
 - VirtualBox (can load multiple guest OSes under a single host operating-system) - [VirtualBox website](https://www.virtualbox.org/)
