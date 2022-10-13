@@ -1,5 +1,5 @@
 # d2hosting guide by [@yanbxr](https://github.com/yanbxr)
-# Recent changes broke the script if you need help message me on Discord: Yanis#0192
+### Recent changes broke the script if you need help message me on Discord: Yanis#0192
 
 ## ⚙️ Requirements
 - VirtualBox (can load multiple guest OSes under a single host operating-system) - [VirtualBox website](https://www.virtualbox.org/)
