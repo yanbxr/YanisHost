@@ -1,6 +1,4 @@
-#### If you need help message me on Discord: Yanis#0192
-
-# d2hosting guide by [@yanbxr](https://github.com/yanbxr)
+# d2hosting guide by [yanis](https://github.com/yanbxr)
 ![](https://www.bungie.net/pubassets/pkgs/132/132674/Banner_TrialsofOsiris.jpg)
 ## ⚙️ Requirements
 - VirtualBox (can load multiple guest OSes under a single host operating-system) - [VirtualBox website](https://www.virtualbox.org/)
