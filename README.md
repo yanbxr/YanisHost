@@ -1,5 +1,6 @@
-# d2hosting guide by [yanis](https://github.com/yanbxr)
-![](https://www.bungie.net/pubassets/pkgs/132/132674/Banner_TrialsofOsiris.jpg)
+![Linux](https://img.shields.io/badge/platform-Linux-55f.svg?style=plastic)
+![bash](https://img.shields.io/badge/language-bash-9f9.svg?style=plastic)
+
 ## ⚙️ Requirements
 - VirtualBox (can load multiple guest OSes under a single host operating-system) - [VirtualBox website](https://www.virtualbox.org/)
 - Ubuntu 20.04 server image - [Download image](https://releases.ubuntu.com/20.04/ubuntu-20.04.2-live-server-amd64.iso)
